@@ -73,7 +73,7 @@ function auton() {
     printT()
     printHopper()
     printSpace()
-    t = 20
+    t = t_limit
 }
 
 function transition() {
@@ -87,13 +87,22 @@ function transition() {
     printT()
     printHopper()
     printSpace()
+    t = t_limit
 }
 
 function ourShift(t_limit) {
     const pt = pts
     while (t_limit - t > 1) {
-        move(1)
-        collect(1000, t_limit)
+        if (hopper < hopperSize) {
+            move(1)
+            if (t_limit - t < 20) {
+                collect(20, t_limit)
+            } else {
+                collect(1000, t_limit)
+            }
+        }
+
+
         if (t_limit - t > 1) {
             shoot(1000, t_limit)
         }
@@ -108,22 +117,22 @@ function ourShift(t_limit) {
 function oppShift(t_limit) {
     const pt = pts
     move(2)
-    while (t_limit - t > 1) {
-        collect(1000, t_limit)
-        stockpile(1000, t_limit)
-    }
+    collect(1000, t_limit)
 
     console.log("OPPONENT SHIFT POINTS:", pts - pt)
     printT()
     printHopper()
     printSpace()
+    t = t_limit
 }
 
 function endgame(t_limit) {
     const pt = pts
     while (t_limit - t > 1) {
-        move(1)
-        collect(1000, t_limit)
+        if (hopper < hopperSize) {
+            move(1)
+            collect(1000, t_limit)
+        }
         shoot(1000, t_limit)
     }
 
