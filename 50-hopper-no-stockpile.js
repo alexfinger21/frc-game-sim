@@ -131,7 +131,11 @@ function endgame(t_limit) {
     while (t_limit - t > 1) {
         if (hopper < hopperSize) {
             move(1)
-            collect(1000, t_limit)
+            if (t_limit - t < 20) {
+                collect(20, t_limit)
+            } else {
+                collect(1000, t_limit)
+            }
         }
         shoot(1000, t_limit)
     }
