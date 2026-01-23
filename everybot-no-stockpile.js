@@ -32,9 +32,9 @@ const TIMES = {
 }
 
 const moveField = 8.8
-const shootTime = 0.3
-const intakeTime = 0.5
-const aimTime = 0.8
+const shootTime = 4
+const intakeTime = 0
+const aimTime = 0.5
 
 // GLOBALS
 let t = 0
