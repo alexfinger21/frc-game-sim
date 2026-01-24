@@ -28,13 +28,17 @@ const TIMES = {
     shift2: 80,
     shift3: 105,
     shift4: 130,
-    endgame: 160
+    endgame: 153,
+    climb: 160
 }
 
-const moveField = 8.8
-const shootTime = 4
-const intakeTime = 0
+const moveField = 8
+const shootTime = 0.2
+const intakeTime = 0.1
 const aimTime = 0.5
+
+const climbTime = 7
+const climbLevel = 1
 
 // GLOBALS
 let t = 0
@@ -57,7 +61,10 @@ function game() {
     ourShift(TIMES.shift4)
     console.log("ENDGAME")
     endgame(TIMES.endgame)
-
+    console.log("CLIMB")
+    pts += 10 * climbLevel
+    t += climbTime
+    console.log("CLIMB POINTS", 10 * climbLevel)
     console.log('\x1b[33m%s\x1b[0m', `TOTAL SCORE: ${pts}`)  
 }
 
